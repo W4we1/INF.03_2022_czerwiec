@@ -11,18 +11,14 @@
         </div>
         <div class="left">
         <h3>Ryby zamieszkujące rzeki</h3>
-            <?php
-            try
-            {
-                $pdo = new PDO(`mysql:host=localhost;dbname=wedkowanie`, `root`, `root`);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $stmt=$pdo->query(`SELECT ryby.nazwa, lowisko.akwen, lowisko.wojewodztwo FROM ryby JOIN lowisko ON ryby.id=lowisko.Ryby_id WHERE lowisko.rodzaj = 3;);
-                echo `<ul`;
-                foreach($stmt as $row)
-                {
-                    echo `<li>`.$row[`ryba.nazwa`].`:`.$row[``]
-                }
+        <?php
+            require_once "localhost";
+            $z=$mysqli->query("SELECT ryby.nazwa, lowisko.akwen, lowisko.wojewodztwo FROM ryby JOIN lowisko ON ryby.id=lowisko.Ryby_id WHERE lowisko.rodzaj = 3;");
+            while ($r=$z->fetch.assoc()) {
+                echo .$r["ryby.nazwa"]. .$r["loiwsko.akwen"]. .$r["lowisko.wojewodztwo"].;
             }
+            $z->free();
+            ?>
         </div>
         <div class="left2">
         <h3>Ryby drapieżne naszych wód</h3>
